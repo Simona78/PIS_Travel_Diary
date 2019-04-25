@@ -1,0 +1,68 @@
+﻿@model Trasy.Models.ZoznamBodovViewModel
+@{
+    ViewBag.Title = "ZoznamBodov";
+}
+
+<h1>Zoznam pridaných bodov</h1>
+
+
+<button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("PridajBod","Home", new { id=@Model.id })'">Pridať mesto/obec</button>
+<button type="button" class="btn btn-primary" onclick="Decide()">Späť na zoznam trás</button>
+<br><br>
+<div class="table-responsive">
+    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+        <thead>
+            <tr>
+                <th>Poradie</th>
+                <th>Názov</th>
+                <th>Typ</th>
+                <th>Priemerné počasie tento rok</th>
+                <th>Je tu podnik?</th>
+                <th>Otváracie hodiny</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var p in Model.b)
+            {
+                <tr>
+                    <td>@p.poradie</td>
+                    <td>@p.nazov</td>
+                    @if (@p.typ == true)
+                    {
+                        <td>mesto</td>
+                    }
+                    else
+                    {
+                        <td>dedina</td>
+                    }
+                    <td>@p.pocasie stupňov</td>
+                    @if (@p.podnik == true) {
+                        <td>áno</td>
+                    }
+                    else {
+                        <td>nie</td>
+                    }
+                    <td>@p.otvrHodiny</td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+
+</div>
+
+
+<script>
+    
+
+    function Decide() {
+        if (@Html.Raw(Model.b.Count()) >= 2)
+             window.location.href = '@Url.Action("Index","Home")'
+        else
+            window.location.href = '@Url.Action("MaloBodov","Home")'
+    }
+</script>
+

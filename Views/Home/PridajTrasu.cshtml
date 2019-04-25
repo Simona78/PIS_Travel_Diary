@@ -1,0 +1,29 @@
+﻿@model Trasy.Models.Trasa
+@{
+    ViewBag.Title = "PridajTrasu";
+}
+
+<h1>Pridanie trasy</h1>
+
+    <div class="row">
+
+        @using (Html.BeginForm("PridajTrasu", "Home", FormMethod.Post, new { }))
+        {
+            <div class="col-lg-6">
+
+                <div class="form-group">
+                    <label>Názov</label>
+                    @Html.TextBoxFor(m => m.nazov, new { @class = "form-control" })
+                </div>
+
+
+                <button type="submit" class="btn btn-default">Pridaj trasu</button>
+               
+            </div>
+            
+        }
+
+        
+    </div>
+
+

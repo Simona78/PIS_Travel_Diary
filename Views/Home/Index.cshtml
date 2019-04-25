@@ -1,0 +1,37 @@
+﻿@model List<Trasy.Models.Trasa>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+                <h1>Zoznam trás</h1>
+
+                <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("PridajTrasu","Home")'">Pridať trasu</button> 
+                <br><br>
+                <div class="table-responsive">
+                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <thead>
+                            <tr>
+
+                                <th>Názov</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var p in Model)
+                            {
+                                <tr>
+                                    
+                                    <td><a href='@Url.Action("ZoznamBodov","Home",new {id_tr=@p.id, nazov=@p.nazov } )'>@p.nazov</a></td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+              
+
+          
+

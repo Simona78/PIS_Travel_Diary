@@ -1,0 +1,91 @@
+﻿@model Trasy.Models.SpracujBodViewModel
+@{
+    ViewBag.Title = "SpracujBod";
+}
+
+<h1>Vyber si zo zoznamu bodov</h1>
+
+<div class="row">
+
+    @using (Html.BeginForm("SpracujBod", "Home", FormMethod.Post, new { }))
+    {
+    <div class="col-lg-6">
+        <h2>Mestá</h2>
+
+        <div class="table-responsive">
+            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th>Názov</th>
+                        <th></th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                        @foreach (var p in Model.mesta)
+                        {
+<tr>
+                            <td>@p</td>
+                            <td>
+                                <button type="button" onclick="location.href='@Url.Action("NajdiBod","Home",new {id_tr=Model.id_trasy, nazov=@p, typ = true} )'">
+
+                                    <!--<i class="fa fa-times"></i>-->
+                                    <p>pridať</p>
+
+                                </button>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+
+        </div>
+
+
+        <h2>Obce</h2>
+
+        <div class="table-responsive">
+            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th>Názov</th>
+                        <th></th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var p in Model.obce)
+                    {
+                        <tr>
+                            <td>@p</td>
+                            <td>
+                                <button type="button" onclick="location.href='@Url.Action("NajdiBod","Home",new {id_tr=Model.id_trasy, nazov=@p, typ = false} )'">
+
+                                    <!--<i class="fa fa-times"></i>-->
+                                    <p>pridať</p>
+
+                                </button>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+
+        </div>
+
+
+
+
+    </div>
+
+    }
+
+
+</div>
+

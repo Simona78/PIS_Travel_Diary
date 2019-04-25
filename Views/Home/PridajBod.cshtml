@@ -1,0 +1,34 @@
+﻿@model Trasy.Models.PridajBodViewModel
+@{
+    ViewBag.Title = "PridajBod";
+}
+
+<h1>Pridanie bodu</h1>
+
+<div class="row">
+
+    @using (Html.BeginForm("PridajBod", "Home", FormMethod.Post, new { }))
+    {
+    <div class="col-lg-6">
+
+        <div class="form-group">
+            <label>Názov</label>
+            @Html.TextBoxFor(m => m.nazov, new { @class = "form-control" })
+        </div>
+
+        
+
+        @Html.HiddenFor(m => m.id_trasy)
+
+
+        <button type="submit" class="btn btn-default">Vyhľadaj bod</button>
+
+    </div>
+
+    }
+
+
+</div>
+
+
+
